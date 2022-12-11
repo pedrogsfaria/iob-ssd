@@ -1,12 +1,12 @@
-ifeq ($(filter GPIO, $(SW_MODULES)),)
+ifeq ($(filter SSD, $(SW_MODULES)),)
 
-SW_MODULES+=GPIO
+SW_MODULES+=SSD
 
-include $(GPIO_DIR)/software/software.mk
+include $(SSD_DIR)/software/software.mk
 
 # add embeded sources
-SRC+=iob_gpio_swreg_emb.c
+SRC+=iob_ssd_swreg_emb.c
 
-iob_gpio_swreg_emb.c: iob_gpio_swreg.h
+iob_ssd_swreg_emb.c: iob_ssd_swreg.h
 
 endif

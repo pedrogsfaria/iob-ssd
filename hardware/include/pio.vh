@@ -1,4 +1,4 @@
-   // GPIO
-   input [`GPIO_INPUT_W-1:0] gpio_input,
-   output [`GPIO_OUTPUT_W-1:0] gpio_output,
-   output [`GPIO_OUTPUT_W-1:0] gpio_output_enable,
+   // SSD
+   // input [13:0] ssd_data_in,
+   output [3:0] ssd_anode,
+   output [7:0] ssd_seg,

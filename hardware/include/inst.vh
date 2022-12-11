@@ -1,22 +1,22 @@
    //
-   // GPIO
+   // SSD
    //
 
-   iob_gpio gpio0
+   iob_ssd ssd
      (
       .clk     (clk),
       .rst     (rst),
 
       // Registers interface
-      .gpio_input (gpio_input),
-      .gpio_output (gpio_output),
-      .gpio_output_enable (gpio_output_enable),
+      //.ssd_data_in (ssd_data_in),
+      .ssd_anode (ssd_anode),
+      .ssd_seg (ssd_seg),
 
       // CPU interface
-      .valid   (slaves_req[`valid(`GPIO)]),
-      .address (slaves_req[`address(`GPIO,`iob_gpio_swreg_ADDR_W+2)-2]),
-      .wdata   (slaves_req[`wdata(`GPIO)]),
-      .wstrb   (slaves_req[`wstrb(`GPIO)]),
-      .rdata   (slaves_resp[`rdata(`GPIO)]),
-      .ready   (slaves_resp[`ready(`GPIO)])
+      .valid   (slaves_req[`valid(`SSD)]),
+      .address (slaves_req[`address(`SSD,`iob_ssd_swreg_ADDR_W+2)-2]),
+      .wdata   (slaves_req[`wdata(`SSD)]),
+      .wstrb   (slaves_req[`wstrb(`SSD)]),
+      .rdata   (slaves_resp[`rdata(`SSD)]),
+      .ready   (slaves_resp[`ready(`SSD)])
       );

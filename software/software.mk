@@ -1,15 +1,15 @@
-include $(GPIO_DIR)/config.mk
+include $(SSD_DIR)/config.mk
 
-GPIO_SW_DIR:=$(GPIO_DIR)/software
+SSD_SW_DIR:=$(SSD_DIR)/software
 
 #include
-INCLUDE+=-I$(GPIO_SW_DIR)
+INCLUDE+=-I$(SSD_SW_DIR)
 
 #headers
-HDR+=$(GPIO_SW_DIR)/*.h iob_gpio_swreg.h
+HDR+=$(SSD_SW_DIR)/*.h iob_ssd_swreg.h
 
 #sources
-SRC+=$(GPIO_SW_DIR)/iob-gpio.c
+SRC+=$(SSD_SW_DIR)/iob-ssd.c
 
-iob_gpio_swreg.h: $(GPIO_DIR)/mkregs.conf
-	$(MKREGS) iob_gpio $(GPIO_DIR) SW
+iob_ssd_swreg.h: $(SSD_DIR)/mkregs.conf
+	$(MKREGS) iob_ssd $(SSD_DIR) SW
