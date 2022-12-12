@@ -8,8 +8,8 @@
       .rst     (rst),
 
       // Registers interface
-      //.ssd_data_in (ssd_data_in),
       .ssd_anode (ssd_anode),
+      .ssd_dp (ssd_dp),
       .ssd_seg (ssd_seg),
 
       // CPU interface

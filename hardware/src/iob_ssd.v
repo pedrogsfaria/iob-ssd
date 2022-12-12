@@ -22,7 +22,8 @@ module iob_ssd
 
    //additional inputs and outputs
    `IOB_OUTPUT(ssd_anode, 4), 	 //Anode selection
-   `IOB_OUTPUT(ssd_seg, 8), 	 //Segment signal
+   `IOB_OUTPUT(ssd_dp, 1), 	 //Decimal point "active low"   
+   `IOB_OUTPUT(ssd_seg, 7), 	 //Segment signal
    
 `include "iob_gen_if.vh"
    );
@@ -30,25 +31,38 @@ module iob_ssd
 //BLOCK Register File & Configuration control and status register file.
 `include "iob_ssd_swreg_gen.vh"
 
-    // SWRegs
-    `IOB_WIRE(SSD_TXDATA, 16)
-    iob_reg #(.DATA_W(16), .RST_VAL(0))
-    ssd_txdata (
+    // SWRegs   
+   `IOB_WIRE(SSD_RATE, 32)
+    iob_reg #(.DATA_W(32), .RST_VAL(0))
+    ssd_rate (
         .clk        (clk),
         .arst       (rst),
         .rst        (rst),
-        .en         (SSD_TXDATA_en),
-        .data_in    (SSD_TXDATA_wdata),
-        .data_out   (SSD_TXDATA)
-    ); 
+        .en         (SSD_RATE_en),
+        .data_in    (SSD_RATE_wdata),
+        .data_out   (SSD_RATE)
+    );
+
+   `IOB_WIRE(SSD_DATA_IN, 16)
+    iob_reg #(.DATA_W(16), .RST_VAL(0))
+    ssd_data_in (
+        .clk        (clk),
+        .arst       (rst),
+        .rst        (rst),
+        .en         (SSD_DATA_IN_en),
+        .data_in    (SSD_DATA_IN_wdata),
+        .data_out   (SSD_DATA_IN)
+    );
 
    // Seven_segment instantiation
    ssd ssd_core
      (
       .clk (clk),
       .rst (rst),
-      .data_in (SSD_TXDATA),
+      .rate (SSD_RATE),
+      .data_in (SSD_DATA_IN),
       .anode (ssd_anode),
+      .dp (ssd_dp),
       .seg (ssd_seg)
       );			     
 
