@@ -4,8 +4,8 @@
 
 //SSD functions
 
-//Set SSD base address
-void ssd_init(int base_address);
+//Initialize SSD 
+void ssd_init(int base_address, uint32_t refresh_rate);
 
 //Set SSD number to display
 void ssd_set_number(uint16_t number);
