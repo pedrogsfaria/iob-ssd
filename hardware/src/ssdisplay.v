@@ -48,7 +48,7 @@ module ssdisplay
 
 
    // Generation of anode and seg signals
-   always @(seg_counter)
+   always @(seg_counter, seg0, seg1, seg2, seg3)
      begin
 	case(seg_counter)	  
 	  2'b00: begin // Turn on Segment 3
