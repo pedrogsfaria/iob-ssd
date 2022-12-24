@@ -9,6 +9,8 @@ HW_MODULES+=SSD
 SSD_INC_DIR:=$(SSD_HW_DIR)/include
 SSD_SRC_DIR:=$(SSD_HW_DIR)/src
 
+#import module
+include $(LIB_DIR)/hardware/iob_reg/hardware.mk
 
 #include files
 VHDR+=$(wildcard $(SSD_INC_DIR)/*.vh)
